@@ -99,6 +99,9 @@ if (lectura.endsWith("Parar")) {
 if (lectura.endsWith("Panel")) {
   //Panel
 }
+if (lectura.endsWith("Auto")) {
+  //Modo Automatico
+}
 
 if (lectura.endsWith("\n")) { // imprimir solo cuando se recibe un salto de línea
   Serial.println(lectura);
