@@ -61,7 +61,7 @@ void LecturaDHT(){
   humedadDHT = sensorDHT.readHumidity();
 }
 void UnionDatos(){
-  datos=latitud+","+longitud+","+String(temperaturaDHT)+","+String(humedadDHT)+","+String(Higro);
+  datos="Datos"+latitud+","+longitud+","+String(temperaturaDHT)+","+String(humedadDHT)+","+String(Higro);
   Serial.println(datos);
 }
 void HumSuelo(){
@@ -76,36 +76,31 @@ void LeerLoRa(){
   lectura += buffer;
   buffer = "";
 }
-
-if (lectura.endsWith("Adelante")) {
-  //Adelante
-}
-
-if (lectura.endsWith("Atras")) {
-  //Atras
-}
-if (lectura.endsWith("Izquierda")) {
-  //Izquierda
-}
-if (lectura.endsWith("Derecha")) {
-  //Derecha
-}
 if (lectura.endsWith("Presentar")) {
   //Presentar
 }
-if (lectura.endsWith("Parar")) {
+
+if (lectura.endsWith("Sembrar")) {
   //Parar
 }
 if (lectura.endsWith("Panel")) {
   //Panel
 }
 if (lectura.endsWith("Auto")) {
-  //Modo Automatico
+  //Auto
 }
 
 if (lectura.endsWith("\n")) { // imprimir solo cuando se recibe un salto de línea
   Serial.println(lectura);
   lectura = ""; // reiniciar la variable lectura
 }
+  }
+}
+void EnviarVoz(bool ResultadoFuncion){
+  if (ResultadoFuncion==true){
+   LoRa.println("SiSembrar");
+  }
+  else{
+    LoRa.println("NoSembrar");
   }
 }
